@@ -1,4 +1,5 @@
 Entidades\Persona.class
 Servlets\registroServlet.class
 BaseDatos\Base_Datos.class
+Servlets\accesoServlet.class
 BaseDatos\PersonaDAO.class

@@ -4,9 +4,17 @@
         <servlet-name>registroServlet</servlet-name>
         <servlet-class>Servlets.registroServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>accesoServlet</servlet-name>
+        <servlet-class>Servlets.accesoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registroServlet</servlet-name>
         <url-pattern>/registroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accesoServlet</servlet-name>
+        <url-pattern>/accesoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

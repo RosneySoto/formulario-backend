@@ -5,9 +5,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <h1>Registro de Usuario</h1>
+        <h1>Inicio de Sesion</h1>
         
+        <form action="accesoServlet" method="POST">
+            Correo Electronico:<input type="text" name="email" required><br>
+            Contraseña:<input type="password" minlength="3" maxlength="10" name="pass" required><br>
+            <input type="reset" name="accion" value="Limpiar">
+            <input type="submit" value="Enviar">
+        </form>
+        <br>
         <a href="registro.jsp">Quiero registrame!</a>
+        <a href="consultaUser.jsp">Consultar Personas registradas</a>
+        <a href="updatePass.jsp">Modificar contraseña</a>
+        <a href="Delete.jsp">Desuscribirme</a>
         
     </body>
 </html>

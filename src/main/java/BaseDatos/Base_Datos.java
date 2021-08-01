@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class Base_Datos {
 
-        private static Connection con = null;       //Establezco la conexion como nula
+    private static Connection con = null;       //Establezco la conexion como nula
         
         //Metodo para conectase a la base de datos
     public static Connection obtenerConexion() throws SQLException, ClassNotFoundException {

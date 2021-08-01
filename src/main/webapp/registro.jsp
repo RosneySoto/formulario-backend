@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="estilo.css">
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <title>Registro</title>
     </head>
     <body>
@@ -30,7 +31,7 @@
             
             <input class="botton" type="submit" value="Registrarme">
 
-            <p><b><a href="acceso.jsp">Ya estoy registrado!</b></a></p>
+            <p><b><a href="index.html">Ya estoy registrado!</b></a></p>
         </form>
     </div>
         
