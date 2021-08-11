@@ -4,17 +4,21 @@ import BaseDatos.PersonaDAO;
 import Entidades.Persona;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class accesoServlet extends HttpServlet {
+/**
+ *
+ * @author Alvarez Jaen
+ */
+public class mostrarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,10 +37,10 @@ public class accesoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet accesoServlet</title>");            
+            out.println("<title>Servlet mostrarServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet accesoServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet mostrarServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,36 +73,25 @@ public class accesoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        PersonaDAO dao = new PersonaDAO();
-        Persona p = new Persona();
-        int r;
+        String mostrar = request.getParameter("buscar");
+        if(mostrar.equals("")){
+            ArrayList<Persona>lista=PersonaDAO.obtenerPersona();
+            request.setAttribute("personas", lista);
+            request.getRequestDispatcher("mostrar.jsp").forward(request, response);
+        }else{
+            System.out.println("Error");
+        }
         
-        //HttpSession session = request.getSession();
-            try {
-                String usuario = request.getParameter("email");
-                String clave = request.getParameter("pass");
-                p.setEmail(usuario);
-                p.setPassword(clave);
-                r = dao.validar(p);
-                if(r==1){
-                    request.setAttribute("acceso", usuario);
-                    request.getRequestDispatcher("welcome.jsp").forward(request, response);
-                }else{
-                    request.getRequestDispatcher("index.html").forward(request, response);
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            
-//        if(usuario != ""){
-//            session.setAttribute("log", true);
-//            session.setAttribute("correo", usuario);
-//            response.sendRedirect("welcome.jsp");
-//        }else{
-//            session.setAttribute("log", false);
-//            session.setAttribute("correo", usuario);
-//            response.sendRedirect("error.jsp");
-//        }
+        try {
+            Persona p = PersonaDAO.obtenerPersona(mostrar);
+            request.setAttribute("persona", p);
+        } catch (SQLException ex) {
+            request.setAttribute("error", "HUBO UN ERROR");
+            ex.printStackTrace();
+        }finally{
+            request.getRequestDispatcher("mostrar.jsp").forward(request, response);
+        }
+        
     }
 
     /**

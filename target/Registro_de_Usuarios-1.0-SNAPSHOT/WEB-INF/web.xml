@@ -8,6 +8,18 @@
         <servlet-name>accesoServlet</servlet-name>
         <servlet-class>Servlets.accesoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarServlet</servlet-name>
+        <servlet-class>Servlets.eliminarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateServlet</servlet-name>
+        <servlet-class>Servlets.updateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mostrarServlet</servlet-name>
+        <servlet-class>Servlets.mostrarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registroServlet</servlet-name>
         <url-pattern>/registroServlet</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>accesoServlet</servlet-name>
         <url-pattern>/accesoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarServlet</servlet-name>
+        <url-pattern>/eliminarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateServlet</servlet-name>
+        <url-pattern>/updateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mostrarServlet</servlet-name>
+        <url-pattern>/mostrarServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

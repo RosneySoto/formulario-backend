@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+        <title>Start Page</title>
     </head>
     <body>
-        <h1>Inicio de Sesion</h1>
-        
-        <form action="accesoServlet" method="POST">
-            Correo Electronico:<input type="text" name="email" required><br>
-            Contraseña:<input type="password" minlength="3" maxlength="10" name="pass" required><br>
-            <input type="reset" name="accion" value="Limpiar">
-            <input type="submit" value="Enviar">
-        </form>
-        <br>
-        <a href="registro.jsp">Quiero registrame!</a>
-        <a href="consultaUser.jsp">Consultar Personas registradas</a>
-        <a href="updatePass.jsp">Modificar contraseña</a>
-        <a href="Delete.jsp">Desuscribirme</a>
+        <div class="container">
+            <form class="form" action="accesoServlet" method="POST">
+                <h4>Inicio de Sesion</h4>
+
+                <input class="form-input" type="text" name="email" id="nombre" placeholder="Correo Electrónico:" required><br>
+                <input class="form-input" type="password" name="pass" id="nombre" placeholder="Contraseña:" minlength="3" 
+                       maxlength="10" required><br>
+                <input class="botton" type="submit" value="Ingresar">
+                <input class="botton" type="reset" name="accion" value="Borrar">
+                
+                <p><b><a href="registro.jsp">Quiero registrame!</a></b></p><br>
+            </form>
+        </div>
         
     </body>
 </html>

@@ -1,5 +1,8 @@
+Servlets\mostrarServlet.class
 Entidades\Persona.class
 Servlets\registroServlet.class
+Servlets\updateServlet.class
+Servlets\eliminarServlet.class
 BaseDatos\Base_Datos.class
 Servlets\accesoServlet.class
 BaseDatos\PersonaDAO.class

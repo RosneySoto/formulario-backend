@@ -68,40 +68,39 @@ public class PersonaDAO {
     }
 
     //Elimina a una persona por su ID
-    public static int eliminar(Persona p) throws Exception {
+    public static void eliminar(int id) throws Exception {
 
         Connection con = null;
         PreparedStatement pst = null;
-        int registros = 0;
+        //int registros = 0;
 
         try {
             con = Base_Datos.obtenerConexion();
-            String sql = "DELETE FROM persona WHERE idpersona=?";
+            String sql = "DELETE FROM persona WHERE idpersona = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, p.getId());
-            registros = pst.executeUpdate();
-
+            pst.setInt(1, id);
+            pst.execute();
         } catch (SQLException e) {
+            System.out.println("ERROR " + e.getMessage());
             e.printStackTrace();
 
         } finally {
-
             pst.close();
             con.close();
         }
-        return registros;
+        //return registros;
     }
 
     //Muestra toda la lista de personas/objetos creados
-    public static List<Persona> obtenerPersona() {
+    public static ArrayList<Persona> obtenerPersona() {
         Connection con = null;
         ResultSet rs = null;
         PreparedStatement pst = null;
-        Persona p = null;
         ArrayList<Persona> personas = new ArrayList<>();
 
         try {
             con = Base_Datos.obtenerConexion();
+            Persona p = null;
             String sql = "SELECT * FROM persona";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -160,6 +159,49 @@ public class PersonaDAO {
             ex.printStackTrace();
             return 0;
         }
+    }
+    
+    public static Persona obtenerPersona(String email) throws SQLException{
+    
+        Connection con = null;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        Persona p = null;
+        
+        try {
+            con = Base_Datos.obtenerConexion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String sql = "SELECT * FROM persona WHERE email = ?";
+        pst = con.prepareStatement(sql);
+        pst.setString(1, email);
+        rs = pst.executeQuery();
+        
+        if(rs.next()){
+            int id = rs.getInt("idpersona");
+            String nomb = rs.getString("nombre");
+            String apell = rs.getString("apellido");
+            String mail = rs.getString("email");
+            String pass = rs.getString("password");
+            p = new Persona();
+            p.setId(id);
+            p.setNombre(nomb);
+            p.setApellido(apell);
+            p.setEmail(mail);
+            p.setPassword(pass);
+        }
+        
+        try {
+            rs.close();
+            pst.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return p;   
     }
     
 }

@@ -36,6 +36,11 @@ public class Persona {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "ID " + id + " - " + nombre +" "+ apellido + ", y su correo es: " + email;
+    }
+    
     public int getId() {
         return id;
     }
