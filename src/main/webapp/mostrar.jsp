@@ -17,12 +17,14 @@
                 <input class="botton" type="submit" value="Enviar">
             </form>
         </div>
-        
+        <p>
         <% if(request.getAttribute("persona")!= null){
 		Persona p = (Persona) request.getAttribute("persona");
 		out.print("Se ha encontrado al usuario <br>"+ p);
 	}
 	 %>
+        </p>
+        <p>
         <% if (request.getAttribute("personas") != null) {
                  ArrayList<Persona> p = (ArrayList) request.getAttribute("personas");
 
@@ -32,11 +34,13 @@
 
 
          %>
-         
+        </P>
+        <p>
          <% 
 		if(request.getAttribute("error") != null){
 			out.print(request.getAttribute("error"));
 		}
 	%>
+        </p>
     </body>
 </html>

@@ -74,12 +74,13 @@ public class eliminarServlet extends HttpServlet {
         try {
             p = PersonaDAO.obtenerPersona(mail);
             id = p.getId();
-            request.setAttribute("correo", p.getId());
+            request.setAttribute("correo", "Se a eliminado al usuario " + p.getNombre()+" "+p.getApellido()+" con email "
+                    +p.getEmail());
         } catch (Exception e) {
             e.printStackTrace();
         }finally{ 
             try {
-                BaseDatos.PersonaDAO.eliminar(id);
+                PersonaDAO.eliminar(id);
             } catch (Exception ex) {
                 request.setAttribute("mensaje", "Hubo un error al intentar darse de baja");
             }        

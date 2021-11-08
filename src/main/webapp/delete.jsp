@@ -17,8 +17,7 @@
         <h2>Resultado de la eliminacion</h2><hr>
         
         <% if(request.getAttribute("correo")!= null){
-		Persona p = (Persona) request.getAttribute("correo");
-		out.print("Se ha borrado a la persona con correo electronico: "+ p.getEmail());
+		out.print("Se ha borrado a la persona con correo electronico: "+ request.getAttribute("correo")); 
 	}
 	
 	 %>
