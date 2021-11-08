@@ -11,6 +11,15 @@ public class Persona {
     public Persona() {
     }
 
+    public Persona(int id) {
+        this.id = id;
+    }
+    
+    public Persona(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public Persona(String nombre, String apellido, String email, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,6 +36,11 @@ public class Persona {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "ID " + id + " - " + nombre +" "+ apellido + ", y su correo es: " + email;
+    }
+    
     public int getId() {
         return id;
     }
